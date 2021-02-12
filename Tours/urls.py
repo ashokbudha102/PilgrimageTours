@@ -18,6 +18,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import include
+from about.views import about_view
 
 urlpatterns = [
     path('1/admin/', admin.site.urls),
@@ -26,4 +27,5 @@ urlpatterns = [
     path('home/',include('Home.urls')),
     path('login/',include('Signup.urls')),
     path('login/',include('Login.urls')),
+    path('about/',about_view,name='about')
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
