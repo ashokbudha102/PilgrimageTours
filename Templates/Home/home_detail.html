@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+{{data.title}}<br>
+{{data.description}}<br>
+{{data.other_details}}<br>
+{{data.number_of_people}}<br>
+<img src="/media/{{data.image}}">
+<img src="/media/{{data.feature_image}}">
+<br>
+<button id="btn">touch me</button>
+<select id='adds-on' multiple>
+    {% for titles in data2 %}
+        <option value="{{titles}}">{{titles}}</option>
+    {% endfor %}
+</select><br>
+{{data.price}}
+</body>
+</html>
+
+
+
+
