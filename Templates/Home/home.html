@@ -47,11 +47,18 @@ active
           {% for items in products %}
           <div class="col-lg-4 d-flex align-items-stretch">
             <div class="product-item">
-              <a href="#"><img src="/media/{{items.feature_image}}" alt="Images" style="width:350px;height:300px;"></a>
+              <a href="{{items.get_absolute_url}}"><img src="/media/{{items.feature_image}}" alt="Images" style="width:350px;height:300px;"></a>
               <div class="down-content">
-                <a href="#"><h4><b>{{items.title}}</b></h4></a>
+                <a href="{{items.get_absolute_url}}"><h4><b>{{items.title}}</b></h4></a>
                 <h6>{{items.price}}<b> Rs</b></h6>
-                <p>{{items.description}}</p>
+                <hr>
+                <div class="row">
+                  {% for category in items.categories.all %}
+                  <a href="{{category.get_absolute_url}}">   {{ category.title }}</a>
+                  {% endfor %}<br>
+                </div>
+                <hr>
+                <p>{{items.description|slice:":200" }}...</p>
                 <hr>
                 <ul class="stars">
                   <li><i class="fa fa-star"></i></li>

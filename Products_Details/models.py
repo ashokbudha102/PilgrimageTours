@@ -11,16 +11,23 @@ class Add_Feature(models.Model):
 
 class Add_category(models.Model):
     title=models.CharField(max_length=50)
+    slug=models.SlugField(null=True, blank=True,unique=True)
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super(Add_category, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.title
     
+    def get_absolute_url(self):
+        return reverse('categories', kwargs={'slug': self.slug})
+    
 class Destination(models.Model):
     title=models.CharField(max_length=100)
     description=models.TextField()
-    image1=models.ImageField(upload_to='product_image',null=True,blank=True)
-    image2=models.ImageField(upload_to='product_image',null=True,blank=True)
-    image3=models.ImageField(upload_to='product_image',null=True,blank=True)
+    image1=models.ImageField(upload_to='product_image',default='default.jpg')
+    image2=models.ImageField(upload_to='product_image',default='default.jpg')
+    image3 = models.ImageField(upload_to='product_image',default='default.jpg')
     feature_image=models.ImageField(upload_to='product_image',null=True,blank=True)
     other_details=models.TextField(null=True,blank=True)
     number_of_people=models.IntegerField(null=True,blank=True)
@@ -36,7 +43,7 @@ class Destination(models.Model):
     
 
     def get_absolute_url(self):
-        return reverse('article_detail', kwargs={'slug': self.slug})
+        return reverse('detail_view', kwargs={'slug': self.slug})
     
     def __str__(self):
         return self.title

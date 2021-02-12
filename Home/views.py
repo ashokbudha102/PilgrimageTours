@@ -9,3 +9,7 @@ def home_detail_view(request,slug):
     data=Destination.objects.get(slug=slug)
     data2=data.additional_feature.all()
     return render(request,'Home/home_detail.html',{'data':data,'data2':data2})
+
+def categoricalSorting(request, slug):
+    posts=Destination.objects.filter(categories__slug=slug)
+    return render(request, 'Home/categorial.html',{'posts':posts})
