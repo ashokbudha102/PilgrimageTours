@@ -9,6 +9,12 @@ class Add_Feature(models.Model):
     def __str__(self):
         return self.title
 
+class Add_category(models.Model):
+    title=models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.title
+    
 class Destination(models.Model):
     title=models.CharField(max_length=100)
     description=models.TextField()
@@ -20,15 +26,17 @@ class Destination(models.Model):
     number_of_people=models.IntegerField(null=True,blank=True)
     price=models.IntegerField(null=True,blank=True)
     guide=models.BooleanField(default=True)
+    categories=models.ManyToManyField(Add_category, null=True, blank=True)
     additional_feature=models.ManyToManyField(Add_Feature,null=True,blank=True)
     slug=models.SlugField(null=True,blank=True,unique=True)
 
     def save(self, *args,**kwargs):
         self.slug=slugify(self.title)
         super(Destination,self).save(*args,**kwargs)
+    
 
-    # def get_absolute_url(self):
-    #     return reverse('article_detail', kwargs={'slug': self.slug})
+    def get_absolute_url(self):
+        return reverse('article_detail', kwargs={'slug': self.slug})
     
     def __str__(self):
         return self.title
