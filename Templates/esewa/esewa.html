@@ -1,0 +1,32 @@
+<hmtl>
+
+    <title>Pay it</title>
+    <body>
+    <body>
+    <div class="details col-md-6">
+                        <h3 class="product-title">{{data.title}}</h3>
+                        <p class="product-description">{{data.description}}</p>
+                        <h4 class="price">current price: <span>{{data.price}}</span></h4>
+                        <br>
+                        <p>
+                            <h3>Extra Details::</h3>
+                            {{data.other_details}}
+                        </p>
+                        <h3>Price: 100</h3>
+
+                    </div>
+    <form action="https://uat.esewa.com.np/epay/main" method="POST">
+    <input value="100" name="tAmt" type="hidden">
+    <input value="90" name="amt" type="hidden">
+    <input value="5" name="txAmt" type="hidden">
+    <input value="2" name="psc" type="hidden">
+    <input value="3" name="pdc" type="hidden">
+    <input value="EPAYTEST" name="scd" type="hidden">
+    <input value="{{ pid }}" name="pid" type="hidden">
+    <input value="http://127.0.0.1:8000/epay/success?q=su" type="hidden" name="su">
+    <input value="http://127.0.0.1:8000/epay/failed?q=fu" type="hidden" name="fu">
+    <input value="Submit" type="submit">
+    </form>
+</body>
+    </body>
+</hmtl>
