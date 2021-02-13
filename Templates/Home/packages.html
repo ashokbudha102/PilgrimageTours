@@ -22,7 +22,7 @@
             <div class="filters">
               <ul>
                   {% for cat in Add_category %}
-                  <a href=#><li >{{cat.title}}</li></a>
+                  <a href=#><li>{{cat.title}}</li></a>
                   {% endfor %}
               </ul>
             </div>
@@ -44,7 +44,7 @@
                                   {% endfor %}<br>
                                 </div>
                                 <hr>
-                                <p>{{items.description|slice:":200" }}...</p>
+                                <p>{{ items.description|slice:":200" }}...</p>
                                 <hr>
                                 <ul class="stars">
                                   <li><i class="fa fa-star"></i></li>
@@ -58,6 +58,23 @@
                             </div>
                           </div>
                     {% endfor %}
+                    <div class="pagination" style="padding-left: 40%; padding-top: 20px; padding-bottom: 20px;">
+                      <span class="step-links">
+                          {% if Destination.has_previous %}
+                              <button class=" btn" style="background: #f33f3f;"><a href="?page=1" style="color: black;">« first</a></button>
+                              <button class=" btn" style="background: #f33f3f;"><a href="?page={{ Destination.previous_page_number }}" style="color: black;">previous</a></button>
+                          {% endif %}
+                    
+                          <span class="current">
+                              Page {{ Destination.number }} of {{ Destination.paginator.num_pages }}
+                          </span>
+                    
+                          {% if Destination.has_next %}
+                              <button class=" btn" style="background: #f33f3f;"><a href="?page={{ Destination.next_page_number }}" style="color: black;">next</a></button>
+                              <button class=" btn" style="background: #f33f3f;"><a href="?page={{ Destination.paginator.num_pages }}" style="color: black;">last »</a></button>
+                          {% endif %}
+                      </span>
+                    </div>
                 </div>
             </div>
           </div>

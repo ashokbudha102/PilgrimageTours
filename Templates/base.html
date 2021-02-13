@@ -70,7 +70,7 @@ https://templatemo.com/tm-546-sixteen-clothing
                 </a>
               </li> 
               <li class="nav-item {% block package1 %}{% endblock %}">
-                <a class="nav-link" href=#>Packages</a>
+                <a class="nav-link" href={% url "packages" %}>Packages</a>
               </li>
               <li class="nav-item {% block about1 %}{% endblock %}">
                 <a class="nav-link" href={% url "about" %}>About Us</a>
@@ -114,10 +114,9 @@ https://templatemo.com/tm-546-sixteen-clothing
       </div>
     </footer>
 
-
     <!-- Bootstrap core JavaScript -->
     <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
-    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
 
     <!-- Additional Scripts -->
@@ -165,6 +164,6 @@ https://templatemo.com/tm-546-sixteen-clothing
   })();
 </script>
 
-  </body>
+</body>
 
 </html>
