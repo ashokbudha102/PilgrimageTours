@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from Products_Details.models import Destination,Add_category
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from Login.forms import Login_Form
 
 def home_list(request):
     context=Destination.objects.all()[0:6]
-    return render(request,'Home/home.html',{'products':context})
+    form=Login_Form()
+    return render(request,'Home/home.html',{'products':context,'form':form})
 
 def home_detail_view(request,slug):
     data=Destination.objects.get(slug=slug)

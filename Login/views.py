@@ -18,7 +18,7 @@ def Login_View(request):
             if user is not None:
                 lgn(request,user)
                 request.session['member-id']=user.id
-                return redirect('/home/')
+                return redirect('/')
             else:
                 return render(request,"Login/login.html",{'form':form , 'error':'True'})
 
