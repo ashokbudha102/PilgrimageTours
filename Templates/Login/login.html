@@ -1,6 +1,40 @@
-<form method="POST">
-    {% csrf_token %}
-    {{form.username}}<br><br>
-    {{form.password}}<br><br>
-    <button type="submit"> Login</button>
-</form>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href={% static 'assets/css/login.css' %} rel='stylesheet'>
+</head>
+<body>
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+            <!-- Tabs Titles -->
+    
+            <!-- Icon -->
+            <div class="fadeIn first">
+                <img src="https://i.pinimg.com/originals/39/07/26/39072670fcd89ee47d32ce00d7e22030.png" id="icon" alt="User Icon" />
+            </div>
+    
+            <!-- Login Form -->
+            <form method="POST">
+                {% csrf_token %}
+                {{form.username}}
+                {{form.password}}
+                <input type="submit" class="fadeIn fourth" value="Log In">
+            </form>
+    
+            <!-- Remind Passowrd -->
+            <div id="formFooter">
+                <a class="underlineHover" href="#">Forgot Password?</a>
+            </div>
+    
+        </div>
+    </div>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
+</html>

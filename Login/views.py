@@ -26,6 +26,10 @@ def Login_View(request):
             form=Login_Form()
             return render(request,"Login/login.html",{'form':form})
 
+
+
+
+
 def Logout_View(request):
     del request.session['member-id']
     logout(request)

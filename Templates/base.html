@@ -17,6 +17,9 @@
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!--
 
 TemplateMo 546 Sixteen Clothing
@@ -35,17 +38,6 @@ https://templatemo.com/tm-546-sixteen-clothing
   </head>
 
   <body>
-
-    <!-- ***** Preloader Start ***** -->
-    <div id="preloader">
-        <div class="jumper">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>  
-    <!-- ***** Preloader End ***** -->
-
     <!-- Header -->
     <header class="">
       <nav class="navbar navbar-expand-lg">
@@ -71,24 +63,65 @@ https://templatemo.com/tm-546-sixteen-clothing
                 <a class="nav-link" href={% url "contact" %}>Contact Us</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href=#>
+                
                   {% if user.is_authenticated %}
                     {% for detail in request.user.profile_set.all %}
-                       <img src="/media/{{detail.profile_picture}}" width="20" height="20" class="rounded-circle"> 
+                      <a class="nav-link" href=#><img src="/media/{{detail.profile_picture}}" width="20" height="20" class="rounded-circle"> </a>
                     {% endfor %}
+                  {% else %}
+                  <a class="nav-link" href={% url "login" %}>Login</a>
                   {% endif %}
-                </a>
               </li>
+              
             </ul>
           </div>
         </div>
       </nav>
     </header>
 
+        <!-- Bootstrap core JavaScript -->
+        <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+        <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+        
+        
+        <!-- Additional Scripts -->
+        <script src="{% static 'assets/js/custom.js' %}"></script>
+        <script src="{% static 'assets/js/owl.js' %}"></script>
+        <script src="{% static 'assets/js/slick.js' %}"></script>
+        <script src="{% static 'assets/js/isotope.js' %}"></script>
+        <script src="{% static 'assets/js/accordions.js' %}"></script>
+        
+        
+        <script language="text/Javascript">
+          cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
+          function clearField(t) {                   //declaring the array outside of the
+            if (!cleared[t.id]) {                      // function makes it static and global
+              cleared[t.id] = 1;  // you could use true and false, but that's more typing
+              t.value = '';         // with more chance of typos
+              t.style.color = '#fff';
+            }
+          }
+        </script>
+        <!-- message -->
+        <script type="text/javascript">
+          (function () {
+            var options = {
+              facebook: "http://m.me/Webcodersnepal", // Facebook page ID
+              whatsapp: "+9779841019357", // WhatsApp number
+              call_to_action: "Message us", // Call to action
+              button_color: "#FF6550", // Color of button
+              position: "right", // Position may be 'right' or 'left'
+              order: "facebook,whatsapp", // Order of buttons
+            };
+            var proto = document.location.protocol, host = "getbutton.io", url = proto + "//static." + host;
+            var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+            s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
+            var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+          })();
+        </script>
 {% block home %}
 {% endblock home %}
-
-    <footer>
+    <!-- <footer>
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -100,49 +133,10 @@ https://templatemo.com/tm-546-sixteen-clothing
           </div>
         </div>
       </div>
-    </footer>
+    </footer> -->
 
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
-    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
 
-
-    <!-- Additional Scripts -->
-    <script src="{% static 'assets/js/custom.js' %}"></script>
-    <script src="{% static 'assets/js/owl.js' %}"></script>
-    <script src="{% static 'assets/js/slick.js' %}"></script>
-    <script src="{% static 'assets/js/isotope.js' %}"></script>
-    <script src="{% static 'assets/js/accordions.js' %}"></script>
-
-
-    <script language = "text/Javascript"> 
-      cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
-      function clearField(t){                   //declaring the array outside of the
-      if(! cleared[t.id]){                      // function makes it static and global
-          cleared[t.id] = 1;  // you could use true and false, but that's more typing
-          t.value='';         // with more chance of typos
-          t.style.color='#fff';
-          }
-      }
-    </script>
-<!-- message -->
-<script type="text/javascript">
-  (function () {
-      var options = {
-          // facebook: "191365582342865", // Facebook page ID
-          whatsapp: "+9779841019357", // WhatsApp number
-          call_to_action: "Message us", // Call to action
-          button_color: "#FF6550", // Color of button
-          position: "left", // Position may be 'right' or 'left'
-          order: "facebook,whatsapp", // Order of buttons
-      };
-      var proto = document.location.protocol, host = "getbutton.io", url = proto + "//static." + host;
-      var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
-      s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
-      var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
-  })();
-</script>
 
   </body>
 
