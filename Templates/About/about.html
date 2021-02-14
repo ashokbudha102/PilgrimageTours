@@ -1,2 +1,43 @@
 {% extends 'base.html' %}
+{% block about1 %}
+active
+{% endblock %}
+{% block home %}
+<div class="container" style="width: 80%; padding-left: 5%; padding-top: 10%;">
+    <div class="card-body">
+    <h5 class="card-title">ABOUT US</h5>
+    <p class="card-text"><h3>Pilgrims Travels and Tours is a leading teamwork of travel and tourism enthusiasts.
+        It is a government registered travel agency that runs under the existing rules and regulations of 
+        the country. Our management team of this company has spent two decades of time on organizing 
+        tours and travel packages in Nepal. This helps us to offer uncompromised services to our 
+        clients and accomplished our commitment of the packages. Nepal pilgrimage tours are our 
+        emphasized tour packages.
 
+        Providing travel services comfortably in the competitive price is our motto that we are guided from. 
+        We apply all the safety measures at the place where our clients need. We think about safety first. 
+        Our expertise can be seen when we lead you to the various destinations you want to reach or travel. 
+        We are here to assist you for the cozy and safety tours. For more details, please, feel free to 
+        contact us.</h3></p>
+    </div>
+</div>
+<div class="row">
+{% for file in about %}
+    <div class="container-align-right" style="padding-top: 10%; width: 30%; padding-left: 15%;"> 
+        <div class="card-center" style="width: 500px;">
+            <div class="row no-gutters">
+                <div class="col-sm-5">
+                    <img class="card-img" src="/media/{{ file.image }}" alt="Suresh Dasari Card">
+                </div>
+                <div class="col-sm-7">
+                    <div class="card-body">
+                        <h5 class="card-title">{{file.name}}</h5>
+                        <p class="card-text">{{ file.text }}</p>
+                        <a href="/media/{{ file.image }}" class="btn btn-primary">View image</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
